@@ -41,7 +41,8 @@ const TodayModal = ({ events, calendarColors, onDismiss, onSnooze }: TodayModalP
   }, []);
 
   const today = new Date().toISOString().split('T')[0];
-  const todayEvents = events.filter(e => e.startStr.startsWith(today));
+  const todayEvents = events.filter(e => e.start && e.start.startsWith(today));
+
 
   return (
     <div className="fixed inset-0 bg-black/60 z-[99999] flex items-center justify-center">
