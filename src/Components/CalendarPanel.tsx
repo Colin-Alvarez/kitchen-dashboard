@@ -5,7 +5,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { fetchCalendarEvents } from '../utils/googleApi';
 import PopoverModal from './PopoverModal';
-import TodayModal from './TodayModal';
+import TodayModal from './Todaymodal';
 
 const sourceColors: Record<string, string> = {
   gigs: '#00bfa5',
