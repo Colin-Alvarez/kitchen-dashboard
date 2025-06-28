@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "types": ["node"],
+      "module": "ESNext",
+      "target": "ESNext",
+      "jsx": "react-jsx",
+      "moduleResolution": "Node"
+    }
+  }
+  

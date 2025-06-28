@@ -1,0 +1,149 @@
+body {
+  background-color: #87CEFA;
+  background-size: cover;
+  background-position: center;
+  /* overflow: hidden; ❌ disable this */
+  margin: 0;
+  font-family: 'Gloria Hallelujah', cursive;
+  min-height: 100vh;
+}
+
+
+  
+  .panel {
+    background-image: url('/maple-wood-texture.jpg');
+    z-index: 10;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  
+  .panel {
+    background-color: #f4e3c1; /* backup tone */
+    background-blend-mode: multiply;
+  }
+  
+  /* FullCalendar */
+  .fc {
+    height: 100%;
+    background: transparent;
+    border-radius: 16px;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+  }
+  .fc .fc-daygrid-day-number,
+  .fc .fc-event {
+    color: #1e3a8a !important;
+  }
+  .fc-daygrid-day {
+    padding: 8px;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  .fc-daygrid-day:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .fc-event {
+    background-color: rgba(133, 94, 66, 0.85) !important; /* rich maple brown */
+    color: #fff !important;
+    font-weight: bold;
+    border-radius: 6px;
+  }
+  
+  /* Animated Clouds */
+  .cloud {
+    background: url('/cloud.png') no-repeat;
+    background-size: contain;
+    width: 200px;
+    height: 120px;
+    position: absolute;
+    top: var(--top);
+    left: -300px;
+    animation: floatClouds var(--duration) linear infinite;
+    animation-delay: var(--delay);
+    opacity: 5;
+    z-index: -1;
+    pointer-events: none;
+    transition: opacity 1s ease;
+  }
+  
+  
+  @keyframes floatClouds {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(120vw);
+    }
+  }
+  
+  
+  @media (max-width: 768px) {
+    .cloud {
+      width: 150px;
+      height: 90px;
+    }
+  }
+  
+  .calendar-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .calendar-gigs .fc-event-title {
+    background-color: #00bfa5;
+  }
+  .calendar-beanie .fc-event-title {
+    background-color: #1e40af;
+  }
+  .calendar-connor .fc-event-title {
+    background-color: #dc2626;
+  }
+  .calendar-family .fc-event-title {
+    background-color: #16a34a;
+  }
+  .calendar-bills .fc-event-title {
+    background-color: #7c3aed;
+  }
+  .screensaver-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background-color: transparent;
+    display: flex;
+    justify-content: random;
+    align-items: random;
+  }
+  @keyframes sunPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+  
+  @keyframes cloudDrift {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+  }
+  
+  @keyframes rainBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+  }
+  
+  @keyframes stormFlash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  
+  @keyframes snowFall {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(10px); }
+  }
+  
