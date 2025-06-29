@@ -61,7 +61,7 @@ const MainDashboard = () => {
 
   return (
     <>
-      <main className="w-[1080px] h-[1920px] mx-auto p-4 bg-dashboard-bg text-white font-handwriting relative">
+      <main className="w-[1080px] h-[1920px] overflow-hidden mx-auto p-4 bg-dashboard-bg text-white font-handwriting relative">
         <div style={{ height: '20px' }} />
 
         <section
@@ -208,7 +208,6 @@ const MainDashboard = () => {
             flexDirection: 'column',
             alignItems: 'flex-start',
             padding: '20px',
-            overflowY: 'auto',
           }}
         >
           <NotesPanel />

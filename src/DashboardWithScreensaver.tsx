@@ -20,7 +20,6 @@ const DashboardWithScreensaver = () => {
     }, INACTIVITY_TIMEOUT);
   };
 
-  
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'e') {
@@ -41,23 +40,26 @@ const DashboardWithScreensaver = () => {
   }, []);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden">
-      {/* Animated clouds in background */}
+    <div
+      className="fixed top-0 left-0 w-[1080px] h-[1920px] overflow-hidden"
+      style={{
+        transform: 'scale(calc(100vw / 1080))',
+        transformOrigin: 'top left',
+      }}
+    >
+      {/* 🌥️ Animated background clouds */}
       <div className="cloud" style={{ '--top': '10%', '--delay': '0s', '--duration': '60s' } as React.CSSProperties} />
       <div className="cloud" style={{ '--top': '30%', '--delay': '5s', '--duration': '80s' } as React.CSSProperties} />
       <div className="cloud" style={{ '--top': '50%', '--delay': '10s', '--duration': '100s' } as React.CSSProperties} />
-  
+
       <Clouds />
       <CloudEasterEggs />
-  
-      {/* 🧩 Main dashboard content */}
+
       <MainDashboard />
-  
-      {/* 💥 Screensaver only shows if not idle AND modal not open */}
+
       {isIdle && !window.__modalOpen && <SlideShowOverlay />}
     </div>
   );
-  
 };
 
 export default DashboardWithScreensaver;
