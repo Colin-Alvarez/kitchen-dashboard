@@ -125,18 +125,19 @@ body {
   .calendar-bills .fc-event-title {
     background-color: #7c3aed;
   }
-  .screensaver-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 9999;
-    background-color: transparent;
-    display: flex;
-    justify-content: random;
-    align-items: random;
-  }
+
+.screensaver-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background-color: blurred;
+  display: flex;
+  justify-content: random;
+  align-items: random;
+}
   @keyframes sunPulse {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.1); }

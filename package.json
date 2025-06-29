@@ -7,10 +7,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fullcalendar/common": "^5.11.5",
+    "@fullcalendar/core": "^6.1.17",
     "@fullcalendar/daygrid": "^6.1.17",
     "@fullcalendar/interaction": "^6.1.17",
-    "@fullcalendar/react": "^6.1.9",
+    "@fullcalendar/react": "^6.1.17",
     "@supabase/supabase-js": "^2.50.0",
     "@vitejs/plugin-react": "^4.5.2",
     "axios": "^1.10.0",

@@ -8,7 +8,7 @@ const PhotoUploadQR = () => {
       <div className="bg-zinc-900 border border-emerald-500 rounded-xl shadow-md w-160px h-160px object-contain flex flex-col justify-center items-center space-y-3 text-center">
        
         <div className="bg-white p-2 rounded">
-          <QRCode value={uploadUrl} size={180} />
+          <QRCode value={uploadUrl} size={145} />
         </div>
       </div>
     </div>

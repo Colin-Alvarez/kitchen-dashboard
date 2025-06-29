@@ -5,12 +5,14 @@ import SlideShowOverlay from './screensaver/SlideShowOverlay';
 import Clouds from './Components/Clouds';
 import CloudEasterEggs from './Components/CloudEasterEggs';
 
-const INACTIVITY_TIMEOUT = 180000; // 3 minutes
+const INACTIVITY_TIMEOUT = 1000; // Set to 3 minutes later
 
 const DashboardWithScreensaver = () => {
   const { isIdle, setIsIdle } = useAppContext();
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const [scale, setScale] = useState(window.innerWidth / 1080);
+  const [scale, setScale] = useState(() =>
+    Math.min(window.innerWidth / 1080, window.innerHeight / 1920)
+  );
 
   const resetTimer = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -22,15 +24,13 @@ const DashboardWithScreensaver = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setScale(window.innerWidth / 1080);
+      const widthScale = window.innerWidth / 1080;
+      const heightScale = window.innerHeight / 1900;
+      setScale(Math.min(widthScale, heightScale));
     };
-
     window.addEventListener('resize', handleResize);
-    handleResize(); // Run on mount
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
@@ -53,22 +53,30 @@ const DashboardWithScreensaver = () => {
   }, []);
 
   return (
-    <div className="w-screen h-screen overflow-hidden fixed top-0 left-0 bg-black">
+    <div
+      className="fixed top-0 left-0 overflow-hidden bg-black"
+      style={{
+        width: `${1080 * scale}px`,
+        height: `${1920 * scale}px`,
+      }}
+    >
       <div
-        className="absolute top-0 left-0 w-[1080px] h-[1920px] overflow-hidden"
+        className="absolute top-0 left-0 w-[1080px] h-[1920px]"
         style={{
           transform: `scale(${scale})`,
           transformOrigin: 'top left',
         }}
       >
-        {/* 🌥️ Animated background clouds */}
-        <div className="cloud" style={{ '--top': '10%', '--delay': '0s', '--duration': '60s' } as React.CSSProperties} />
-        <div className="cloud" style={{ '--top': '30%', '--delay': '5s', '--duration': '80s' } as React.CSSProperties} />
-        <div className="cloud" style={{ '--top': '50%', '--delay': '10s', '--duration': '100s' } as React.CSSProperties} />
-
+        {/* Cloud layers stay behind everything */}
         <Clouds />
         <CloudEasterEggs />
-        <MainDashboard />
+
+        {/* Main dashboard with blur if idle */}
+        <div className={`relative z-0 ${isIdle ? 'blur-3xl brightness-75' : ''}`}>
+          <MainDashboard />
+        </div>
+
+        {/* Screensaver overlay floats above it all */}
         {isIdle && !window.__modalOpen && <SlideShowOverlay />}
       </div>
     </div>

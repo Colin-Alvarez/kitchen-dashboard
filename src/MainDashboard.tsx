@@ -61,24 +61,24 @@ const MainDashboard = () => {
 
   return (
     <>
-      <main className="w-[1080px] h-[1920px] overflow-hidden p-4 bg-dashboard-bg text-white font-handwriting relative">
+      <main className="overflow-hidden p-4 bg-dashboard-bg text-white font-handwriting relative">
         <div style={{ height: '20px' }} />
 
         <section
           style={{
-            width: '82.5%',
-            height: '200px',
+            width: '94%',
+            height: '150px',
             margin: '0 auto',
             display: 'grid',
-            gridTemplateColumns: '200px 800px 400px',
-            gap: '65px',
+            gridTemplateColumns: '200px 600px 200px',
+            gap: '30px',
           }}
         >
-          <div style={{ ...panelStyle, width: '200px', height: '200px' }}>
+          <div style={{ ...panelStyle, width: '150px', height: '150px' }}>
             <PhotoUploadQR />
           </div>
 
-          <div style={{ ...panelStyle, width: '800px', height: '200px' }}>
+          <div style={{ ...panelStyle, width: '550px', height: '150px' }}>
             <h1
               className="text-9xl font-bold text-center animate-pulse hover:scale-90 transition-transform duration-300 ease-in-out"
               style={{
@@ -95,7 +95,7 @@ const MainDashboard = () => {
             </h1>
           </div>
 
-          <div style={{ ...panelStyle, width: '200px', height: '200px' }}>
+          <div style={{ ...panelStyle, width: '150px', height: '150px' }}>
             <Control4Launcher onClose={() => {}} />
           </div>
         </section>
@@ -104,8 +104,8 @@ const MainDashboard = () => {
 
         <section
           style={{
-            width: '82.5%',
-            height: '1000px',
+            width: '1005px',
+            height: '800px',
             margin: '0 auto',
             ...panelStyle,
             overflow: 'hidden',
@@ -119,15 +119,16 @@ const MainDashboard = () => {
 
         <section
           style={{
-            width: '82.5%',
+            width: '95%',
             display: 'grid',
+            height: '200px',
             gridTemplateColumns: '1fr 1fr',
-            gap: '60px',
+            gap: '30px',
             margin: '0 auto',
           }}
         >
           <div
-            style={{ ...panelStyle, height: '200px', padding: '20px', flexDirection: 'column' }}
+            style={{ ...panelStyle, height: '150px', padding: '20px', flexDirection: 'column' }}
             onClick={() => {
               setShowChoreModal(true);
               window.__modalOpen = true;
@@ -142,7 +143,7 @@ const MainDashboard = () => {
           <div
             style={{
               ...panelStyle,
-              height: '200px',
+              height: '150px',
               padding: '20px',
               display: 'flex',
               flexDirection: 'column',
@@ -186,8 +187,8 @@ const MainDashboard = () => {
 
         <section
           style={{
-            width: '82.5%',
-            height: '100px',
+            width: '92%',
+            height: '60px',
             margin: '0 auto',
             ...panelStyle,
             fontStyle: 'italic',
@@ -201,8 +202,8 @@ const MainDashboard = () => {
 
         <section
           style={{
-            width: '80%',
-            height: '1000px',
+            width: '90%',
+            height: '400px',
             margin: '0 auto',
             ...panelStyle,
             flexDirection: 'column',
@@ -217,13 +218,13 @@ const MainDashboard = () => {
       </main>
 
       {showGroceryModal && (
-        <div className="fixed inset-0 bg-black/70 z-[9999999] flex items-center justify-center">
+        <div className="fixed inset-0 bg-black/70 z-[10] flex items-center justify-center">
           <GroceryModal onClose={() => setShowGroceryModal(false)} />
         </div>
       )}
 
       {showChoreModal && (
-        <div className="fixed inset-0 bg-black/70 z-[9999999] flex items-center justify-center">
+        <div className="fixed inset-0 bg-black/70 z-[10] flex items-center justify-center">
           <ChoreModal onClose={() => setShowChoreModal(false)} />
         </div>
       )}

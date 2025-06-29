@@ -25,7 +25,7 @@ const Control4Launcher = ({ onClose }: Control4LauncherProps) => {
   return (
     <div
       className="w-[180px] h-[180px] flex items-center justify-center"
-      style={{ width: '180px', height: '180px', overflow: 'hidden' }}
+      style={{ width: '140px', height: '140px', overflow: 'hidden' }}
     >
       <img
         src={LOGO_URL}
