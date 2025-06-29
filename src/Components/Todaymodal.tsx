@@ -20,8 +20,8 @@ const TodayModal = ({ events, calendarColors, onDismiss, onSnooze }: TodayModalP
       const { data, error } = await supabase
         .from('chores')
         .select('*')
-        .or(`and(due_date.lte.${todayStr},done.eq.false)`)
-        .order('due_date', { ascending: true });
+        .or(`and(completed_by.lte.${todayStr},done.eq.false)`)
+        .order('completed_by', { ascending: true });
 
       if (!error && data) setChores(data);
     };
@@ -74,7 +74,7 @@ const TodayModal = ({ events, calendarColors, onDismiss, onSnooze }: TodayModalP
             <ul className="space-y-2">
               {chores.map(chore => (
                 <li key={chore.id} className="text-2xl">
-                  {chore.task} — due {new Date(chore.due_date).toLocaleDateString()}
+                  {chore.task} — due {new Date(chore.completed_by).toLocaleDateString()}
                 </li>
               ))}
             </ul>
