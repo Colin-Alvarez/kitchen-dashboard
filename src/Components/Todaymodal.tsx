@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
-import { XCircle } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+// ...same imports...
 
-interface TodayModalProps {
+import { useEffect, useState } from "react";
+import { supabase } from "../lib/supabase";
+import { XCircle } from "lucide-react";
+
+type TodayModalProps = {
   events: any[];
   calendarColors: Record<string, string>;
   onDismiss: () => void;
   onSnooze: () => void;
-}
+};
 
 const TodayModal = ({ events, calendarColors, onDismiss, onSnooze }: TodayModalProps) => {
   const [chores, setChores] = useState<any[]>([]);
@@ -41,8 +43,10 @@ const TodayModal = ({ events, calendarColors, onDismiss, onSnooze }: TodayModalP
   }, []);
 
   const today = new Date().toISOString().split('T')[0];
-  const todayEvents = events.filter(e => e.start && e.start.startsWith(today));
 
+  const todayEvents = events.filter(
+    (e) => typeof e.start === 'string' && e.start.startsWith(today)
+  );
 
   return (
     <div className="fixed inset-0 bg-black/60 z-[99999] flex items-center justify-center">

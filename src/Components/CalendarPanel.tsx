@@ -1,11 +1,10 @@
-// CalendarPanel.tsx (with filters overlaid center-top on calendar header)
 import React, { useEffect, useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { fetchCalendarEvents } from '../utils/googleApi';
 import PopoverModal from './PopoverModal';
-import TodayModal from './Todaymodal';
+import TodayModal from './TodayModal'; // ✅ capitalized correctly
 
 const sourceColors: Record<string, string> = {
   gigs: '#00bfa5',
