@@ -8,6 +8,13 @@ body {
   min-height: 100vh;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 1080px;
+  height: 1920px;
+}
 
   
   .panel {
