@@ -1,4 +1,4 @@
-// ...same imports...
+// ...same imports
 
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
