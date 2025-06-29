@@ -40,24 +40,24 @@ const DashboardWithScreensaver = () => {
   }, []);
 
   return (
-    <div
-      className="fixed top-0 left-0 w-[1080px] h-[1920px] overflow-hidden"
-      style={{
-        transform: 'scale(calc(100vw / 1080))',
-        transformOrigin: 'top left',
-      }}
-    >
-      {/* 🌥️ Animated background clouds */}
-      <div className="cloud" style={{ '--top': '10%', '--delay': '0s', '--duration': '60s' } as React.CSSProperties} />
-      <div className="cloud" style={{ '--top': '30%', '--delay': '5s', '--duration': '80s' } as React.CSSProperties} />
-      <div className="cloud" style={{ '--top': '50%', '--delay': '10s', '--duration': '100s' } as React.CSSProperties} />
+    <div className="w-screen h-screen overflow-hidden fixed top-0 left-0 bg-black">
+      <div
+        className="absolute top-0 left-0 w-[1080px] h-[1920px] overflow-hidden"
+        style={{
+          transform: `scale(${window.innerWidth / 1080})`,
+          transformOrigin: 'top left',
+        }}
+      >
+        {/* 🌥️ Animated background clouds */}
+        <div className="cloud" style={{ '--top': '10%', '--delay': '0s', '--duration': '60s' } as React.CSSProperties} />
+        <div className="cloud" style={{ '--top': '30%', '--delay': '5s', '--duration': '80s' } as React.CSSProperties} />
+        <div className="cloud" style={{ '--top': '50%', '--delay': '10s', '--duration': '100s' } as React.CSSProperties} />
 
-      <Clouds />
-      <CloudEasterEggs />
-
-      <MainDashboard />
-
-      {isIdle && !window.__modalOpen && <SlideShowOverlay />}
+        <Clouds />
+        <CloudEasterEggs />
+        <MainDashboard />
+        {isIdle && !window.__modalOpen && <SlideShowOverlay />}
+      </div>
     </div>
   );
 };
