@@ -1,5 +1,4 @@
-// DashboardWithScreensaver.tsx
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import MainDashboard from './MainDashboard';
 import { useAppContext } from './context/AppContext';
 import SlideShowOverlay from './screensaver/SlideShowOverlay';
@@ -11,6 +10,7 @@ const INACTIVITY_TIMEOUT = 180000; // 3 minutes
 const DashboardWithScreensaver = () => {
   const { isIdle, setIsIdle } = useAppContext();
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [scale, setScale] = useState(window.innerWidth / 1080);
 
   const resetTimer = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -19,6 +19,19 @@ const DashboardWithScreensaver = () => {
       setIsIdle(true);
     }, INACTIVITY_TIMEOUT);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScale(window.innerWidth / 1080);
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Run on mount
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -44,7 +57,7 @@ const DashboardWithScreensaver = () => {
       <div
         className="absolute top-0 left-0 w-[1080px] h-[1920px] overflow-hidden"
         style={{
-          transform: `scale(${window.innerWidth / 1080})`,
+          transform: `scale(${scale})`,
           transformOrigin: 'top left',
         }}
       >

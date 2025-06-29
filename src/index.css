@@ -2,9 +2,9 @@ html, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  width: 1080px;
-  height: 1920px;
-  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Gloria Hallelujah', cursive;
 }
 
 #root {
